@@ -1,5 +1,7 @@
 package com.scuta.accelerometer;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
@@ -17,11 +19,13 @@ public class MainActivity extends Activity implements SensorEventListener {
 	private Sensor mAccelerometer;
 	private TextView axisX, axisY, axisZ;
 	public TextView timenano,timearray; 
-	double timeStamp = 0;
-	double timeStampTemp=0;
-	
+	//double timeStamp = 0;
+	//double timeStampTemp=0;
+	public dataSample[] array_10 = new dataSample[10];
 	int i = 0;
-	double[][] samples = new double[10][4];
+//	int m = 0;
+//	public ArrayList array_10 = new ArrayList();
+	//double[][] samples = new double[10][4];
 	//double[] onesample = new double[4];
 	
 	
@@ -50,35 +54,33 @@ public class MainActivity extends Activity implements SensorEventListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
+	// 	ArrayList<dataSample> array_10 = new ArrayList<dataSample>(10);
 		
-		TimeStamp timer1 = new TimeStamp();
-		double[] onesample = new double[4];
-		
-//		float x = event.values[0];
-//		float y = event.values[1];
-//	    float z = event.values[2];
-//	    timeStamp = System.currentTimeMillis();
-//	    axisX.setText("X: "+x);
-//	    axisY.setText("Y: "+y);
-//	    axisZ.setText("Z: "+z);
-//	    timenano.setText("Time: "+ timeStamp);
-	    onesample[0] = event.values[0];
-	    onesample[1] = event.values[1];
-	    onesample[2] = event.values[2];   
-	    onesample[3] = timer1.returntime();
-	    samples[i] = onesample;
+		TimeStamp timer_value = new TimeStamp();
+		dataSample first_data = new dataSample(event.values[0], event.values[1], event.values[2], timer_value.returntime());
+		array_10[i] = first_data;
+//		double[] onesample = new double[4];
+//		
+//
+//	    onesample[0] = event.values[0];
+//	    onesample[1] = event.values[1];
+//	    onesample[2] = event.values[2];   
+//	    onesample[3] = timer1.returntime();
+//	    samples[i] = onesample;
+//	    
+//	    
+	    axisX.setText("X: "+array_10[i].xaxis);
+	    axisY.setText("Y: "+array_10[i].yaxis);
+	    axisZ.setText("Z: "+array_10[i].zaxis);
+
+        timenano.setText("Time: "+ array_10[i].timestamp);
+
 	    
-	    
-	    axisX.setText("X: "+onesample[0]);
-	    axisY.setText("Y: "+onesample[1]);
-	    axisZ.setText("Z: "+onesample[2]);
-	    timenano.setText("Time: "+ samples[i][3]);
-//	    double value = samples[1][3]-samples[5][3];
-	    
-//	    timearray.setText("timearray: " + samples[i][3]);
 	    i++;
 	    if (i == 10)
-	    	{i = 0;}
+	    	{
+	    	i = 0;
+	    	}
 	    	
 	   
 	    
