@@ -22,7 +22,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 	
 	int i = 0;
 	double[][] samples = new double[10][4];
-	double[] onesample = new double[4];
+	//double[] onesample = new double[4];
 	
 	
 
@@ -52,7 +52,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 	public void onSensorChanged(SensorEvent event) {
 		
 		TimeStamp timer1 = new TimeStamp();
-
+		double[] onesample = new double[4];
 		
 //		float x = event.values[0];
 //		float y = event.values[1];
@@ -73,9 +73,9 @@ public class MainActivity extends Activity implements SensorEventListener {
 	    axisY.setText("Y: "+onesample[1]);
 	    axisZ.setText("Z: "+onesample[2]);
 	    timenano.setText("Time: "+ samples[i][3]);
-	    double value = samples[1][3]-samples[5][3];
+//	    double value = samples[1][3]-samples[5][3];
 	    
-	    timearray.setText("timearray: " + value);
+//	    timearray.setText("timearray: " + samples[i][3]);
 	    i++;
 	    if (i == 10)
 	    	{i = 0;}
