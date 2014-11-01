@@ -34,4 +34,16 @@
         android:layout_height="wrap_content"
         android:text="Z:" />
 
+    <TextView
+        android:id="@+id/timenano"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="time: " />
+
+    <TextView
+        android:id="@+id/timearray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="timearray:" />
+
 </LinearLayout>
